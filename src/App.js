@@ -16,8 +16,13 @@ export default function App() {
 
     setCalc(calc + value);
 
+    if (updateCalc.includes("*")) {
+      setCalc(calc * value);
+    }
+
     if (!ops.includes(value)) {
-      setResult(eval(calc + value).toString());
+      // setResult(eval(calc + value).toString());
+      setResult((calc + value).toString());
     }
   };
 
@@ -34,8 +39,12 @@ export default function App() {
     return digits;
   };
 
-  const calculate = () => {
-    setCalc(eval(calc).toString());
+  const calculate = (value) => {
+    // eslint-disable-next-line no-eval
+    // setCalc(eval(calc).toString());
+    if (updateCalc.includes("*")) {
+      setCalc(calc * value);
+    }
   };
 
   const deleteLast = () => {
